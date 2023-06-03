@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/663.3e2a7e95.chunk.js","mappings":"0JAOA,UAPgB,WAEf,OADGA,QAAQC,IAAI,sCAEf,iDAEA,C","sources":["components/pages/Reviews/Reviews.jsx"],"sourcesContent":["const Reviews = () => {\n    console.log('агов Reviews!');\n return (\n <div>Це Reviews</div>\n )\n}\n\nexport default Reviews;"],"names":["console","log"],"sourceRoot":""}

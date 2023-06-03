@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/320.5d87cdc2.chunk.js","mappings":"0JAOA,UAPkB,WAEjB,OADGA,QAAQC,IAAI,wCAEf,mDAEA,C","sources":["components/pages/ErrorPage/ErrorPage.jsx"],"sourcesContent":["const ErrorPage = () => {\n    console.log('агов ErrorPage!');\n return (\n <div>Це ErrorPage</div>\n )\n}\n\nexport default ErrorPage;"],"names":["console","log"],"sourceRoot":""}
