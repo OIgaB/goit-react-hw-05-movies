@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import api from '../../../services/themoviedb-api';
 
 
@@ -15,9 +16,12 @@ const Home = () => {
           console.log(error.message); 
         }
       }
+      
     useEffect(() => {
         getTrendingMovies();
     }, []);
+
+    const location = useLocation();
 
     return (
         <>
@@ -25,7 +29,7 @@ const Home = () => {
         <ul>
             {
                 trendingMovies.map(({ id, original_title }) => (
-                    <li key={id}>{original_title}</li>     // <li> 
+                    <Link key={id} to={`${id}`} state={{ from: location }}>{original_title}</Link>     // <li> 
                 ))
             }
         </ul>
