@@ -27,10 +27,18 @@ const fetchMovieByID = async (movieID) => {
     }
 }
 
+const fetchCastByID = async (movieID) => {
+    try {
+        return await axios.get(`${BASE_URL}3/movie/${movieID}/credits?language=en-US&page=1`, options); 
+    } catch(error) {
+        throw new Error(error.message);
+    }
+}
 
 const api = {
     fetchTrendingMovies,
     fetchMovieByID,
+    fetchCastByID,
 };
 
 export default api;
