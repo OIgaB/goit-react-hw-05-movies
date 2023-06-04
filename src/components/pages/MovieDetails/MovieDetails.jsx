@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"; 
+import { useState, useEffect, useRef } from "react"; 
 import { useLocation, useNavigate, useParams, Link, Outlet } from "react-router-dom";
 import api from '../../../services/themoviedb-api';
 import MovieCard from '../../MovieCard/MovieCard';
@@ -11,8 +11,8 @@ const  MovieDetails = () => {
     const [loading, setLoading] = useState(false);
     const { movieId } = useParams();
     const navigate = useNavigate();
-    const locationDetails = useLocation();
-
+    const location = useLocation();
+    const permanentLocation = useRef(location.state?.from ?? '/');
       
     useEffect(() => {
         const getMovieByID = async () => {     // основна ф-ція запиту на бекенд
@@ -32,7 +32,7 @@ const  MovieDetails = () => {
     }, [movieId]);
 
     const handleClick = () => {
-        navigate(locationDetails.state ?? '/')
+        navigate(permanentLocation.current);
     };
 
  return (

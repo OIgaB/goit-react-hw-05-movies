@@ -4,7 +4,6 @@ import api from '../../../services/themoviedb-api';
 
 
 const Home = () => {
-    // console.log('агов Home!');
     const [trendingMovies, setTrendingMovies] = useState([]);
     const location = useLocation();
 
@@ -27,11 +26,9 @@ const Home = () => {
         <>
         <h2>Trending today</h2>
         <ul>
-            {
-                trendingMovies.map(({ id, original_title }) => (
-                    <Link key={id} to={`movies/${id}`} state={{ from: location }}>{original_title}</Link>     // <li> 
-                ))
-            }
+            {trendingMovies.map(({ id, original_title }) => (
+                <Link key={id} to={`movies/${id}`} state={{ from: location }}>{original_title}</Link>     // <li> 
+            ))}
         </ul>
         </>
     )
