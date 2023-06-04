@@ -35,10 +35,21 @@ const fetchCastByID = async (movieID) => {
     }
 }
 
+const fetchReviewByID = async (movieID) => {
+    try {
+        return await axios.get(`${BASE_URL}3/movie/${movieID}/reviews?language=en-US&page=1`, options); 
+    } catch(error) {
+        throw new Error(error.message);
+    }
+}
+// https://api.themoviedb.org/3/movie/movie_id/reviews?language=en-US&page=1
+
+
 const api = {
     fetchTrendingMovies,
     fetchMovieByID,
     fetchCastByID,
+    fetchReviewByID,
 };
 
 export default api;

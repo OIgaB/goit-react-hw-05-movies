@@ -7,7 +7,7 @@ const CastCard = ({ cast }) => {
                     return <li key={id}>
                         <img alt="actor" src={`https://image.tmdb.org/t/p/original/${profile_path}`} width='200'/>
                         <p>{name}</p>
-                        <p>Character: <span>{character}</span></p>
+                        {character && <p>Character: <span>{character}</span></p>}
                     </li>  
                 })}
             </ul>
