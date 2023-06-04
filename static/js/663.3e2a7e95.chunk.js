@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[663],{663:function(e,t,r){r.r(t);var c=r(184);t.default=function(){return console.log("\u0430\u0433\u043e\u0432 Reviews!"),(0,c.jsx)("div",{children:"\u0426\u0435 Reviews"})}}}]);
-//# sourceMappingURL=663.3e2a7e95.chunk.js.map
