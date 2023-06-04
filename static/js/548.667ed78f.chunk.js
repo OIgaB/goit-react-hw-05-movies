@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[548],{548:function(e,t,a){a.r(t);var r=a(184);t.default=function(){return console.log("\u0430\u0433\u043e\u0432 Cast!"),(0,r.jsx)("div",{children:"\u0426\u0435 Cast"})}}}]);
-//# sourceMappingURL=548.667ed78f.chunk.js.map
