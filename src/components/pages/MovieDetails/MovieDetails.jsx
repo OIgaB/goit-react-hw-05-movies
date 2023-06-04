@@ -19,7 +19,7 @@ const  MovieDetails = () => {
             setLoading(true);
             try {
                 const { data } = await api.fetchMovieByID(movieId);   // запит на бекенд і відповідь
-                const filteredApiResponse = [data].map(({ id, original_title, genres, overview, poster_path, vote_average}) => ({ id, original_title, genres, overview, poster_path, vote_average })); //shorthand; усі властивості не потрібні
+                const filteredApiResponse = [data].map(({ id, original_title, genres, overview, poster_path, vote_average, release_date}) => ({ id, original_title, genres, overview, poster_path, vote_average, release_date })); //shorthand; усі властивості не потрібні
                 setMovie(...filteredApiResponse); // запис в стейт відфільтрованих фільмів
             } catch(error) {
               console.log(error.message); 
