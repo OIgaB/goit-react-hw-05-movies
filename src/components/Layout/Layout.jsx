@@ -17,12 +17,10 @@ export const Layout = () => {
                 </ul>
             </header>
             <main>
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<div>Loadin...</div>}>
                     <Outlet/>
                 </Suspense>
             </main>
         </>
     );
 }
-
-// export default Layout;

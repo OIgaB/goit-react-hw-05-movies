@@ -4,7 +4,7 @@ import api from '../../../services/themoviedb-api';
 
 
 const Home = () => {
-    console.log('агов Home!');
+    // console.log('агов Home!');
     const [trendingMovies, setTrendingMovies] = useState([]);
 
     const getTrendingMovies = async () => {     // основна ф-ція запиту на бекенд
@@ -25,17 +25,16 @@ const Home = () => {
 
     return (
         <>
-        <div>Trending today</div>
+        <h2>Trending today</h2>
         <ul>
             {
                 trendingMovies.map(({ id, original_title }) => (
-                    <Link key={id} to={`${id}`} state={{ from: location }}>{original_title}</Link>     // <li> 
+                    <Link key={id} to={`movies/${id}`} state={{ from: location }}>{original_title}</Link>     // <li> 
                 ))
             }
         </ul>
         </>
     )
 }
-
 
 export default Home;
