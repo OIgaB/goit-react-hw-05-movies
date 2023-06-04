@@ -6,6 +6,7 @@ import api from '../../../services/themoviedb-api';
 const Home = () => {
     // console.log('агов Home!');
     const [trendingMovies, setTrendingMovies] = useState([]);
+    const location = useLocation();
 
     const getTrendingMovies = async () => {     // основна ф-ція запиту на бекенд
         try {
@@ -21,7 +22,6 @@ const Home = () => {
         getTrendingMovies();
     }, []);
 
-    const location = useLocation();
 
     return (
         <>

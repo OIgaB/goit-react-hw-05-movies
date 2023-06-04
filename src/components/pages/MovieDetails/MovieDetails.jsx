@@ -37,7 +37,6 @@ const  MovieDetails = () => {
 
  return (
     <>
-        <div>Це MovieDetails</div>
         <button type="button" onClick={handleClick}>Go back</button>
         { loading && <Loader /> }
         <MovieCard movie={movie} />

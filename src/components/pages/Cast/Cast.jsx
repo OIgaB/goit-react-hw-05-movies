@@ -28,7 +28,6 @@ const Cast = () => {
     
  return (
     <>
-        <div>Це Cast</div>
         { loading && <Loader /> }
         <CastCard cast={cast} />
     </>
