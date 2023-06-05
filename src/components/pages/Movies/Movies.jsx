@@ -6,37 +6,30 @@ import CollectionByQuery from '../../../components/CollectionByQuery/CollectionB
 
 const Movies = () => {
     const [searchParams, setSearchParams] = useSearchParams();
+    const [query, setQuery] = useState('');
     const [moviesByQuery, setMoviesByQuery] = useState([]);
     const [loading, setLoading] = useState(false);
-    const query = searchParams.get('query') ?? '';
+    const urlSearchParam = searchParams.get('query') ?? '';
 
 
     const handleChange = ({ target: {value} }) => { // глибока диструктуризація
-        if(value === '') {
-            return setSearchParams({});
-        } else {
-            setSearchParams({ query: value });
-        }
+        setQuery(value);
     }
-        // useEffect(() => { - не працює
-        //     const handler = setTimeout(() => {
-        //         setSearchParams({ query: value });
-        //     }, 300);
-        //     return() => {
-        //         clearTimeout(handler);
-        //     }
-        // }, [value])
     
         const handleSubmit = (event) => {
             event.preventDefault();
-
+            if(query === '') {
+                return setSearchParams({});
+            } else {
+                setSearchParams({ query: query });
+            }
         }
 
         useEffect(() => {
             const getCollectionByQuery = async () => {     // основна ф-ція запиту на бекенд
                 setLoading(true);
                 try {
-                    const { data } = await api.fetchCollectionByQuery(query);   // запит на бекенд і відповідь
+                    const { data } = await api.fetchCollectionByQuery(urlSearchParam);   // запит на бекенд і відповідь
                     const filteredApiResponse = data.results.map(({ id, original_title }) => ({ id, original_title })); //shorthand; усі властивості не потрібні
                     setMoviesByQuery(filteredApiResponse); // запис в стейт відфільтрованих даних про фільм
                 } catch(error) {
@@ -47,7 +40,7 @@ const Movies = () => {
             }
             getCollectionByQuery();
     
-        }, [query]);
+        }, [urlSearchParam]);
 
 
  return (
