@@ -30,7 +30,7 @@ const MovieCard = ({ movie }) => {  //movie - це об'єкт
 
 export default MovieCard;
 
-// MovieCard.propTypes = {
+// MovieCard.propTypes = {                                  - не працює
 //     movie: PropTypes.shape({
 //         original_title: PropTypes.string.isRequired,
 //         genres: PropTypes.array,
