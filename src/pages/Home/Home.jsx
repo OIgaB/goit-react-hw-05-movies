@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import api from '../../../services/themoviedb-api';
+import api from '../../services/themoviedb-api';
+import { Title, List } from "./styled";
+import styled from "styled-components";
+
+const StyledLink = styled(Link)`
+    color: #021a5f;
+`;
 
 
 const Home = () => {
@@ -24,12 +30,12 @@ const Home = () => {
 
     return (
         <>
-        <h2>Trending today</h2>
-        <ul>
+        <Title>Trending today</Title>
+        <List>
             {trendingMovies.map(({ id, original_title }) => (
-                <Link key={id} to={`movies/${id}`} state={{ from: location }}>{original_title}</Link>     // <li> 
+                <StyledLink key={id} to={`movies/${id}`} state={{ from: location }}>{original_title}</StyledLink>     // <li> 
             ))}
-        </ul>
+        </List>
         </>
     )
 }

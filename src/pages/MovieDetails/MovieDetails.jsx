@@ -1,10 +1,19 @@
 import { useState, useEffect, useRef } from "react"; 
-import { useLocation, useNavigate, useParams, Link, Outlet } from "react-router-dom";
-import api from '../../../services/themoviedb-api';
-import MovieCard from '../../MovieCard/MovieCard';
+import { useLocation, useNavigate, useParams, NavLink, Outlet } from "react-router-dom";
+import api from '../../services/themoviedb-api';
+import MovieCard from '../../components/MovieCard/MovieCard';
 import Loader from "components/Loader/Loader";
 import { Suspense } from 'react';
+import { ListContainer } from '../../components/Layout/styled';
+import { GoBackBtn } from './styled';
+import styled from "styled-components";
 
+const StyledLink = styled(NavLink)`
+    color:#b37606;
+    &.active {
+        color: #f9a504;
+    }
+`;
 
 const  MovieDetails = () => {
     const [movie, setMovie] = useState([]);
@@ -19,7 +28,7 @@ const  MovieDetails = () => {
             setLoading(true);
             try {
                 const { data } = await api.fetchMovieByID(movieId);   // запит на бекенд і відповідь
-                const filteredApiResponse = [data].map(({ id, original_title, genres, overview, poster_path, vote_average, release_date}) => ({ id, original_title, genres, overview, poster_path, vote_average, release_date })); //shorthand; усі властивості не потрібні
+                const filteredApiResponse = [data].map(({ original_title, genres, overview, poster_path, vote_average, release_date}) => ({ original_title, genres, overview, poster_path, vote_average, release_date })); //shorthand; усі властивості не потрібні
                 setMovie(...filteredApiResponse); // запис в стейт відфільтрованих даних про фільм
             } catch(error) {
               console.log(error.message); 
@@ -37,17 +46,17 @@ const  MovieDetails = () => {
 
  return (
     <>
-        <button type="button" onClick={handleClick}>Go back</button>
+        <GoBackBtn type="button" onClick={handleClick}>Go back</GoBackBtn>
         { loading && <Loader /> }
         <MovieCard movie={movie} />
-        <ul>
+        <ListContainer>
             <li>
-                <Link to='cast'>Cast</Link>   
+                <StyledLink to='cast'>Cast</StyledLink>   
             </li>
             <li>
-                <Link to='reviews'>Reviews</Link>
+                <StyledLink to='reviews'>Reviews</StyledLink>
             </li>       
-        </ul>
+        </ListContainer>
         <Suspense fallback={<div>Loadin...</div>}>
             <Outlet/>
         </Suspense>

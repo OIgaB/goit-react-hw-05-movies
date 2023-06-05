@@ -3,12 +3,12 @@ import { lazy } from 'react';
 import { Layout } from './Layout/Layout';
 
 // Відкладені імпорти. Сторінка не завантажиться, якщо її не відвідати
-const Home = lazy(() => import('./pages/Home/Home'));
-const Movies = lazy(() => import('./pages/Movies/Movies'));
-const MovieDetails = lazy(() => import('./pages/MovieDetails/MovieDetails'));
-const Cast = lazy(() => import('./pages/Cast/Cast'));
-const Reviews = lazy(() => import('./pages/Reviews/Reviews'));
-const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
+const Home = lazy(() => import('../pages/Home/Home'));
+const Movies = lazy(() => import('../pages/Movies/Movies'));
+const MovieDetails = lazy(() => import('../pages/MovieDetails/MovieDetails'));
+const Cast = lazy(() => import('../pages/Cast/Cast'));
+const Reviews = lazy(() => import('../pages/Reviews/Reviews'));
+const ErrorPage = lazy(() => import('../pages/ErrorPage/ErrorPage'));
 
 
 export const App = () => {

@@ -1,8 +1,9 @@
 import { useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import api from '../../../services/themoviedb-api';
-import Loader from "../../../components/Loader/Loader";
-import CollectionByQuery from '../../../components/CollectionByQuery/CollectionByQuery';
+import api from '../../services/themoviedb-api';
+import Loader from "../../components/Loader/Loader";
+import CollectionByQuery from '../../components/CollectionByQuery/CollectionByQuery';
+import { Form, Input, SearchBtn } from './styled';
 
 const Movies = () => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -45,14 +46,14 @@ const Movies = () => {
 
  return (
     <>
-        <form onSubmit={handleSubmit}>
-            <input 
+        <Form onSubmit={handleSubmit}>
+            <Input 
                 type="text"
                 onChange={handleChange}
                 value={query}
             />
-            <button type="submit">Search</button>
-        </form>
+            <SearchBtn type="submit">Search</SearchBtn>
+        </Form>
         <CollectionByQuery moviesByQuery={moviesByQuery} />
         { loading && <Loader /> }
     </>

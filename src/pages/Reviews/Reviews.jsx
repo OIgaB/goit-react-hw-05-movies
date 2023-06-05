@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from 'react';
-import api from '../../../services/themoviedb-api';
-import Loader from "../../Loader/Loader";
-import ReviewsCard from '../../ReviewsCard/ReviewsCard';
+import api from '../../services/themoviedb-api';
+import Loader from "../../components/Loader/Loader";
+import ReviewsCard from '../../components/ReviewsCard/ReviewsCard';
 
 const Reviews = () => {
     const { movieId } = useParams();

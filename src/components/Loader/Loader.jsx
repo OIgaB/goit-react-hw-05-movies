@@ -11,7 +11,7 @@ const Loader = () => {
             ariaLabel="progress-bar-loading"
             wrapperStyle={{
                 position: 'fixed',
-                top: '20%',
+                top: '50%',
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
             }}

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
-import api from '../../../services/themoviedb-api';
-import Loader from "../../Loader/Loader";
-import CastCard from '../../CastCard/CastCard';
+import api from '../../services/themoviedb-api';
+import Loader from "../../components/Loader/Loader";
+import CastCard from '../../components/CastCard/CastCard';
 
 const Cast = () => {
     const { movieId } = useParams();
