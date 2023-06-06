@@ -16,13 +16,16 @@ const StyledLink = styled(NavLink)`
 `;
 
 const  MovieDetails = () => {
-    const [movie, setMovie] = useState([]);
+    const [movie, setMovie] = useState({});
     const [loading, setLoading] = useState(false);
     const { movieId } = useParams();
+
     const navigate = useNavigate();
     const location = useLocation();
-    const permanentLocation = useRef(location.state?.from ?? '/');
-      
+    const permanentLocation = useRef(location.state?.from ?? '/');  // {current: {…}} => {pathname: '/', search: '', hash: '', state: null, key: ...
+    //const permanentLocation = useRef('/');
+    //console.log(permanentLocation);     // {current: {…}} => {pathname: '/', search: '', hash: '', state: null, key: ...
+
     useEffect(() => {
         const getMovieByID = async () => {     // основна ф-ція запиту на бекенд
             setLoading(true);
@@ -47,8 +50,8 @@ const  MovieDetails = () => {
  return (
     <>
         <GoBackBtn type="button" onClick={handleClick}>Go back</GoBackBtn>
-        { loading && <Loader /> }
         <MovieCard movie={movie} />
+        { loading && <Loader /> }
         <ListContainer>
             <li>
                 <StyledLink to='cast'>Cast</StyledLink>   

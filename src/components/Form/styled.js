@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Form = styled.form`
+export const FormEl = styled.form`
     display: inline-flex;
     gap: 15px;
     border-radius: 4px;

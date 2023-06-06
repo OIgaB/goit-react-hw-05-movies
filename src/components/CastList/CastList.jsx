@@ -2,14 +2,17 @@ import { List, Name, ListItem, ImageWrapper } from './styled';
 import PlaceholderImg from '../../services/placeholderImg.png';
 import PropTypes from 'prop-types';
 
-const CastCard = ({ cast }) => {
+const CastList = ({ cast }) => {
     return (
             <List>
                 {cast && cast.map(({id, profile_path, name, character}) => {
                     return <ListItem key={id}>
                         <ImageWrapper>
-                            {profile_path && <img src={`https://image.tmdb.org/t/p/original/${profile_path}`} alt="actor" />}
-                            {!profile_path && <img src={PlaceholderImg} alt="placeholder" />}
+                            {<img src={profile_path 
+                                ? `https://image.tmdb.org/t/p/original/${profile_path}`
+                                : PlaceholderImg
+                                } alt={name} />
+                            }
                         </ImageWrapper>
                         <Name>{name}</Name>
                         {character && <p>Character: <span>{character}</span></p>}
@@ -19,9 +22,9 @@ const CastCard = ({ cast }) => {
     );
 }
 
-export default CastCard;
+export default CastList;
 
-CastCard.propTypes = {
+CastList.propTypes = {
     cast: PropTypes.arrayOf(PropTypes.shape ({
         id: PropTypes.number.isRequired,
         profile_path: PropTypes.string,

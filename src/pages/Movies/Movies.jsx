@@ -2,28 +2,24 @@ import { useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import api from '../../services/themoviedb-api';
 import Loader from "../../components/Loader/Loader";
-import CollectionByQuery from '../../components/CollectionByQuery/CollectionByQuery';
-import { Form, Input, SearchBtn } from './styled';
+import Form from '../../components/Form/Form';
+import MovieList from '../../components/MovieList/MovieList';
+import { useLocation } from "react-router-dom";
 
 const Movies = () => {
     const [searchParams, setSearchParams] = useSearchParams();
-    const [query, setQuery] = useState('');
     const [moviesByQuery, setMoviesByQuery] = useState([]);
     const [loading, setLoading] = useState(false);
+    const location = useLocation();
+
     const urlSearchParam = searchParams.get('query') ?? '';
 
-
-    const handleChange = ({ target: {value} }) => { // глибока диструктуризація
-        setQuery(value);
-    }
-    
-        const handleSubmit = (event) => {
-            event.preventDefault();
-            if(query === '') {
-                return setSearchParams({});
-            } else {
+        const handleSubmit = (query) => {
+            // if(query === '') {
+            //     return setSearchParams({});
+            // } else {
                 setSearchParams({ query: query });
-            }
+            // }
         }
 
         useEffect(() => {
@@ -43,21 +39,13 @@ const Movies = () => {
     
         }, [urlSearchParam]);
 
-
- return (
-    <>
-        <Form onSubmit={handleSubmit}>
-            <Input 
-                type="text"
-                onChange={handleChange}
-                value={query}
-            />
-            <SearchBtn type="submit">Search</SearchBtn>
-        </Form>
-        <CollectionByQuery moviesByQuery={moviesByQuery} />
-        { loading && <Loader /> }
-    </>
- )
+    return (
+        <>
+            <Form onSubmit={handleSubmit} />
+            {moviesByQuery.length > 0 && <MovieList movies={moviesByQuery} location={location} />}
+            { loading && <Loader /> }
+        </>
+    )
 }
 
 export default Movies;

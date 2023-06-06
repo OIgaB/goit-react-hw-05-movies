@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import api from '../../services/themoviedb-api';
 import Loader from "../../components/Loader/Loader";
-import CastCard from '../../components/CastCard/CastCard';
+import CastList from '../../components/CastList/CastList';
 
 const Cast = () => {
     const { movieId } = useParams();
@@ -29,7 +29,7 @@ const Cast = () => {
  return (
     <>
         { loading && <Loader /> }
-        <CastCard cast={cast} />
+        { cast.length > 0 && <CastList cast={cast} />}   {/* бо пустий масив приводиться до true */}
     </>
  )
 }

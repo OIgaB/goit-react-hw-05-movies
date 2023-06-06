@@ -13,7 +13,6 @@ export const ContentWrapper = styled.section`
 export const PosterWrapper = styled.div`
     width: 300px;
     height: 400px;
-    box-shadow: 9px 4px 4px 0px rgba(182, 179, 179, 0.3);
 `; 
 
 export const TextWrapper = styled.div`
